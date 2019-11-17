@@ -27,7 +27,7 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function(){
     | Method:         GET
     | Description:    Convert the currency provided
     */
-    Route::get('/convert', 'CurrencyController@convert');
+    Route::get('/convert', 'CurrencyController@convert')->middleware('cacheResponse:300');
 
     /*
     |-------------------------------------------------------------------------------
@@ -38,6 +38,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function(){
     | Method:         GET
     | Description:    Get all currency types provided
     */
-    Route::get('/getCurrencyTypes', 'CurrencyController@getCurrencyTypes');
+    Route::get('/getCurrencyTypes', 'CurrencyController@getCurrencyTypes')->middleware('cacheResponse:300');
 
 });
